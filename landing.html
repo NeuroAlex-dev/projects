@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подготовка к ЕГЭ по физике — Виктория</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent1: #6c63ff;
+      --accent2: #00c9ff;
+      --accent3: #a78bfa;
+      --card-bg: rgba(255,255,255,0.72);
+      --shadow: 0 8px 40px rgba(108,99,255,0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8f5ff 40%, #f5f0ff 100%);
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 80px 24px 64px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: -60px -60px auto -60px;
+      height: 480px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(108,99,255,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #6c63ff22, #00c9ff22);
+      border: 1px solid #6c63ff44;
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      color: var(--accent1);
+      margin-bottom: 24px;
+      animation: fadeDown .7s ease both;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(110deg, #6c63ff 10%, #00c9ff 55%, #a78bfa 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeDown .8s .1s ease both;
+    }
+
+    .subtitle {
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-size: clamp(1rem, 2.5vw, 1.18rem);
+      color: #444466;
+      line-height: 1.65;
+      animation: fadeDown .8s .2s ease both;
+    }
+
+    /* ── FLOATING ATOMS ── */
+    .atoms {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .atom {
+      position: absolute;
+      border-radius: 50%;
+      opacity: .18;
+      animation: float linear infinite;
+    }
+    .atom:nth-child(1){ width:80px;height:80px;background:var(--accent1);top:8%;left:5%;animation-duration:12s; }
+    .atom:nth-child(2){ width:50px;height:50px;background:var(--accent2);top:60%;left:90%;animation-duration:9s;animation-delay:-3s; }
+    .atom:nth-child(3){ width:34px;height:34px;background:var(--accent3);top:30%;left:88%;animation-duration:14s;animation-delay:-6s; }
+    .atom:nth-child(4){ width:24px;height:24px;background:var(--accent2);top:75%;left:4%;animation-duration:10s;animation-delay:-1s; }
+    .atom:nth-child(5){ width:60px;height:60px;background:var(--accent3);top:85%;left:50%;animation-duration:16s;animation-delay:-8s; }
+
+    @keyframes float {
+      0%   { transform: translateY(0) rotate(0deg); }
+      50%  { transform: translateY(-30px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      animation: fadeDown .8s .35s ease both;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 48px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(135deg, #6c63ff, #00c9ff);
+      border-radius: 50px;
+      box-shadow: 0 6px 32px rgba(108,99,255,.45);
+      cursor: pointer;
+      border: none;
+      position: relative;
+      animation: pulse 2.4s ease-in-out infinite;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(108,99,255,.55);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 6px 32px rgba(108,99,255,.45); }
+      50%       { box-shadow: 0 6px 48px rgba(0,201,255,.7), 0 0 0 10px rgba(108,99,255,.10); }
+    }
+
+    .tg-link {
+      font-size: .95rem;
+      color: #6c63ff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      opacity: .85;
+      transition: opacity .2s;
+    }
+    .tg-link:hover { opacity: 1; }
+
+    /* ── ADVANTAGES ── */
+    .section {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s, transform .6s;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 48px;
+      color: #1a1a2e;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s .1s, transform .6s .1s;
+    }
+    .section-label.visible,
+    .section-title.visible { opacity: 1; transform: none; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(108,99,255,.13);
+      border-radius: 20px;
+      padding: 36px 28px 32px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      transition: transform .25s, box-shadow .25s;
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .6s, transform .6s, box-shadow .25s;
+    }
+    .card.visible { opacity: 1; transform: none; }
+    .card:nth-child(2) { transition-delay: .12s; }
+    .card:nth-child(3) { transition-delay: .24s; }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(108,99,255,.2);
+    }
+
+    .icon-wrap {
+      width: 58px; height: 58px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ede9fe, #dbeafe);
+    }
+    .icon-wrap svg { width: 30px; height: 30px; }
+
+    .card h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1a1a2e;
+    }
+    .card p {
+      font-size: .95rem;
+      color: #555577;
+      line-height: 1.6;
+    }
+
+    /* ── FOR WHOM ── */
+    .for-whom {
+      background: linear-gradient(120deg, rgba(108,99,255,.08) 0%, rgba(0,201,255,.07) 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(108,99,255,.14);
+      padding: 48px 40px;
+      max-width: 760px;
+      margin: 0 auto 80px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s, transform .7s;
+    }
+    .for-whom.visible { opacity: 1; transform: none; }
+
+    .for-whom h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #1a1a2e;
+    }
+    .for-whom p {
+      font-size: 1rem;
+      color: #444466;
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto 20px;
+    }
+    .check-list {
+      list-style: none;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin-top: 4px;
+    }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .97rem;
+      color: #333355;
+      font-weight: 500;
+    }
+    .check-list li svg { flex-shrink: 0; margin-top: 2px; }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      text-align: center;
+      padding: 0 20px 100px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s, transform .7s;
+    }
+    .bottom-cta.visible { opacity: 1; transform: none; }
+    .bottom-cta p {
+      font-size: 1.05rem;
+      color: #555577;
+      margin-bottom: 28px;
+    }
+    .bottom-cta .cta-btn { font-size: 1.05rem; padding: 16px 44px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: .82rem;
+      color: #aaa;
+      border-top: 1px solid rgba(108,99,255,.08);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 60px 16px 48px; }
+      .for-whom { padding: 36px 20px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating background circles -->
+<div class="atoms" aria-hidden="true">
+  <div class="atom"></div><div class="atom"></div><div class="atom"></div>
+  <div class="atom"></div><div class="atom"></div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="badge">ЕГЭ по физике · 10–11 класс</div>
+
+  <h1>Подготовка к ЕГЭ<br>по физике</h1>
+
+  <p class="subtitle">
+    Виктория — преподаватель по физике, поможет вам уверенно сдать ЕГЭ
+    по авторской методике: понятно, интерактивно и с реальными результатами.
+  </p>
+
+  <div class="cta-wrap">
+    <a href="https://t.me/vikvitalevna" target="_blank" rel="noopener" class="cta-btn">
+      Записаться на занятие
+    </a>
+    <a href="https://t.me/vikvitalevna" target="_blank" rel="noopener" class="tg-link">
+      <!-- Telegram icon -->
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#6c63ff">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.16 13.36l-2.968-.924c-.645-.204-.657-.645.136-.953l11.57-4.461c.537-.194 1.006.131.996.199z"/>
+      </svg>
+      t.me/vikvitalevna
+    </a>
+  </div>
+</section>
+
+<!-- ── ADVANTAGES ── -->
+<div class="section">
+  <p class="section-label">Почему выбирают нас</p>
+  <h2 class="section-title">3 ключевых преимущества</h2>
+
+  <div class="cards">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3>Авторская формула решения задач</h3>
+      <p>
+        Уникальная пошаговая система, разработанная Викторией специально для ЕГЭ.
+        Вы получите чёткий алгоритм решения любого типа задач — от механики до квантовой физики.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/>
+          <path d="M17 11l2 2 4-4"/>
+        </svg>
+      </div>
+      <h3>Активное участие ученика в занятии</h3>
+      <p>
+        Никаких монологов лектора — каждое занятие построено так, что вы решаете, рассуждаете
+        и открываете закономерности сами. Это закрепляет материал в разы лучше.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8M12 17v4"/>
+          <circle cx="9" cy="10" r="1.5" fill="#6c63ff" stroke="none"/>
+          <path d="M12 8v4m0 0l2-2m-2 2l-2-2" stroke="#6c63ff"/>
+        </svg>
+      </div>
+      <h3>Уникальные видеодемонстрации</h3>
+      <p>
+        Авторские видеоматериалы с реальными физическими опытами — вы видите явление
+        вживую, а не читаете о нём. Так абстрактная теория становится понятной и запоминается.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FOR WHOM ── -->
+<div class="section">
+  <div class="for-whom">
+    <h2>Для кого подходит курс?</h2>
+    <p>
+      Курс создан специально для учеников <strong>10 и 11 класса</strong>,
+      которые хотят не просто сдать ЕГЭ по физике, а получить высокий балл
+      и попасть в желаемый университет.
+    </p>
+    <ul class="check-list">
+      <li>
+        <!-- checkmark -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="10" fill="#6c63ff" fill-opacity=".15"/>
+          <path d="M5.5 10.5l3 3 6-6" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Ученики 10 класса, которые хотят начать подготовку заранее
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="10" fill="#6c63ff" fill-opacity=".15"/>
+          <path d="M5.5 10.5l3 3 6-6" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Одиннадцатиклассники с конкретной целью по баллу ЕГЭ
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="10" fill="#6c63ff" fill-opacity=".15"/>
+          <path d="M5.5 10.5l3 3 6-6" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Те, кому нужна понятная система, а не хаотичное повторение тем
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="10" fill="#6c63ff" fill-opacity=".15"/>
+          <path d="M5.5 10.5l3 3 6-6" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Мотивированные ребята, готовые работать и добиваться результата
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── BOTTOM CTA ── -->
+<div class="bottom-cta">
+  <p>Готовы начать? Напишите Виктории и запишитесь на первое занятие.</p>
+  <a href="https://t.me/vikvitalevna" target="_blank" rel="noopener" class="cta-btn">
+    Написать в Telegram
+  </a>
+  <br><br>
+  <a href="https://t.me/vikvitalevna" target="_blank" rel="noopener" class="tg-link" style="justify-content:center">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="#6c63ff">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.16 13.36l-2.968-.924c-.645-.204-.657-.645.136-.953l11.57-4.461c.537-.194 1.006.131.996.199z"/>
+    </svg>
+    t.me/vikvitalevna
+  </a>
+</div>
+
+<footer>© 2026 · Виктория · Подготовка к ЕГЭ по физике</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const targets = document.querySelectorAll(
+    '.section-label, .section-title, .card, .for-whom, .bottom-cta'
+  );
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach(t => obs.observe(t));
+</script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Александр Михайлов — ИИ-эксперт</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f4ff;
+      --card-bg: #ffffff;
+      --text-primary: #1a1a2e;
+      --text-secondary: #5a6a8a;
+      --accent1: #6c63ff;
+      --accent2: #3ecfcf;
+      --accent3: #a78bfa;
+      --shadow: 0 20px 60px rgba(108,99,255,.15);
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(108,99,255,.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(62,207,207,.12) 0%, transparent 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 28px;
+      padding: 52px 44px 44px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp .7s cubic-bezier(.22,.9,.36,1) both;
+    }
+
+    /* top decorative strip */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      border-radius: 28px 28px 0 0;
+    }
+
+    /* subtle grid texture */
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(108,99,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(108,99,255,.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* ── Avatar ── */
+    .avatar-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 38px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -1px;
+      box-shadow: 0 8px 24px rgba(108,99,255,.35);
+      animation: pulse-ring 3s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes pulse-ring {
+      0%,100% { box-shadow: 0 8px 24px rgba(108,99,255,.35), 0 0 0 0 rgba(108,99,255,.25); }
+      50%      { box-shadow: 0 8px 24px rgba(108,99,255,.35), 0 0 0 14px rgba(108,99,255,.0); }
+    }
+
+    /* online badge */
+    .badge {
+      position: absolute;
+      bottom: 4px; right: 4px;
+      width: 18px; height: 18px;
+      background: #22c55e;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    /* ── Name ── */
+    .name {
+      font-size: clamp(1.6rem, 5vw, 2rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent1) 0%, #9b5de5 40%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 12px rgba(108,99,255,.3));
+      line-height: 1.15;
+      margin-bottom: 12px;
+      animation: shimmer 4s linear infinite;
+      background-size: 200% auto;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ── Specialization ── */
+    .spec {
+      font-size: .95rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      max-width: 320px;
+      margin: 0 auto 28px;
+    }
+
+    .spec strong {
+      color: var(--accent1);
+      font-weight: 600;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(108,99,255,.2), transparent);
+      margin: 0 auto 28px;
+    }
+
+    /* ── Tags ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .tag {
+      background: linear-gradient(135deg, rgba(108,99,255,.08), rgba(62,207,207,.08));
+      border: 1px solid rgba(108,99,255,.15);
+      color: var(--accent1);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 100px;
+      letter-spacing: .3px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(108,99,255,.2);
+    }
+
+    /* ── Social icons ── */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .social-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+      position: relative;
+    }
+
+    .social-link svg { display: block; }
+
+    .social-link::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: -26px;
+      left: 50%; transform: translateX(-50%) scale(.8);
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .2s, transform .2s;
+      pointer-events: none;
+    }
+
+    .social-link:hover { transform: translateY(-6px) scale(1.1); }
+    .social-link:hover::after { opacity: 1; transform: translateX(-50%) scale(1); }
+
+    .sl-tg  { background: linear-gradient(135deg,#27a7e5,#1d8fc5); box-shadow: 0 6px 20px rgba(39,167,229,.35); }
+    .sl-tg:hover  { box-shadow: 0 10px 28px rgba(39,167,229,.5); }
+
+    .sl-gh  { background: linear-gradient(135deg,#24292e,#444d56); box-shadow: 0 6px 20px rgba(36,41,46,.3); }
+    .sl-gh:hover  { box-shadow: 0 10px 28px rgba(36,41,46,.5); }
+
+    .sl-li  { background: linear-gradient(135deg,#0077b5,#005885); box-shadow: 0 6px 20px rgba(0,119,181,.3); }
+    .sl-li:hover  { box-shadow: 0 10px 28px rgba(0,119,181,.5); }
+
+    .sl-yt  { background: linear-gradient(135deg,#ff0000,#cc0000); box-shadow: 0 6px 20px rgba(255,0,0,.25); }
+    .sl-yt:hover  { box-shadow: 0 10px 28px rgba(255,0,0,.45); }
+
+    /* ── CTA button ── */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      background-size: 200% auto;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 15px 36px;
+      border-radius: 100px;
+      box-shadow: 0 8px 24px rgba(108,99,255,.4);
+      transition: background-position .4s, transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+      letter-spacing: .3px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.15);
+      transform: translateX(-100%) skewX(-15deg);
+      transition: transform .5s;
+    }
+
+    .cta:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 36px rgba(108,99,255,.55); background-position: right center; }
+    .cta:hover::before { transform: translateX(120%) skewX(-15deg); }
+    .cta:active { transform: translateY(-1px) scale(.99); }
+
+    .cta-icon { flex-shrink: 0; animation: bounce-x 2.5s ease-in-out infinite; }
+
+    @keyframes bounce-x {
+      0%,100% { transform: translateX(0); }
+      50%      { transform: translateX(4px); }
+    }
+
+    /* ── Footer note ── */
+    .footer {
+      margin-top: 28px;
+      font-size: .75rem;
+      color: #b0b8cc;
+      letter-spacing: .3px;
+    }
+
+    /* ── Fade-up entry ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .card { padding: 40px 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="avatar-wrap">
+    <div class="avatar">АМ</div>
+    <div class="badge"></div>
+  </div>
+
+  <h1 class="name">Александр Михайлов</h1>
+
+  <p class="spec">
+    <strong>Эксперт</strong> по применению<br>
+    нейросетей и Искусственного Интеллекта<br>
+    в бизнесе и в жизни
+  </p>
+
+  <div class="divider"></div>
+
+  <div class="tags">
+    <span class="tag">🤖 Нейросети</span>
+    <span class="tag">💼 ИИ для бизнеса</span>
+    <span class="tag">⚡ Автоматизация</span>
+    <span class="tag">🎯 Стратегия</span>
+    <span class="tag">🚀 Продуктивность</span>
+  </div>
+
+  <div class="socials">
+    <!-- Telegram -->
+    <a class="social-link sl-tg" href="https://t.me/AleksMikhailov" target="_blank" rel="noopener" data-label="Telegram" aria-label="Telegram">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M20.665 3.717L2.935 10.555c-1.183.476-1.176 1.138-.217 1.433l4.552 1.42 10.532-6.644c.498-.303.954-.14.58.192L9.295 15.566l-.368 4.823c.54 0 .776-.248 1.074-.538l2.58-2.506 5.357 3.952c.986.545 1.695.264 1.94-.913l3.516-16.562c.361-1.45-.548-2.107-1.73-1.105z" fill="#fff"/>
+      </svg>
+    </a>
+
+    <!-- GitHub -->
+    <a class="social-link sl-gh" href="#" target="_blank" rel="noopener" data-label="GitHub" aria-label="GitHub">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="social-link sl-li" href="#" target="_blank" rel="noopener" data-label="LinkedIn" aria-label="LinkedIn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a class="social-link sl-yt" href="#" target="_blank" rel="noopener" data-label="YouTube" aria-label="YouTube">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+        <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </a>
+  </div>
+
+  <a class="cta" href="https://t.me/AleksMikhailov" target="_blank" rel="noopener">
+    <svg class="cta-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M20.665 3.717L2.935 10.555c-1.183.476-1.176 1.138-.217 1.433l4.552 1.42 10.532-6.644c.498-.303.954-.14.58.192L9.295 15.566l-.368 4.823c.54 0 .776-.248 1.074-.538l2.58-2.506 5.357 3.952c.986.545 1.695.264 1.94-.913l3.516-16.562c.361-1.45-.548-2.107-1.73-1.105z" fill="#fff"/>
+    </svg>
+    Написать мне
+  </a>
+
+  <p class="footer">Открыт к сотрудничеству и консультациям</p>
+</div>
+
+</body>
+</html>
