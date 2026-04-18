@@ -143,12 +143,6 @@
     .glass:hover::after { opacity: 1; }
     .glass:hover { border-color: rgba(99,102,241,0.4); }
 
-    /* Featured card animated glow pulse */
-    @keyframes featuredGlow {
-      0% { box-shadow: 0 0 20px rgba(82,84,216,0.15), 0 8px 32px rgba(82,84,216,0.08); }
-      100% { box-shadow: 0 0 40px rgba(8,145,178,0.18), 0 8px 36px rgba(8,145,178,0.1); }
-    }
-    .service-card.featured { animation: featuredGlow 3s ease-in-out infinite alternate; }
 
     /* Hero badge ring pulse */
     @keyframes badgePulseRing {
@@ -409,8 +403,6 @@
     }
     .service-card { padding: 24px; }
     .service-card.featured {
-      background: linear-gradient(160deg, rgba(82,84,216,0.07) 0%, rgba(8,145,178,0.04) 100%);
-      border-color: rgba(82,84,216,0.2);
       position: relative; overflow: hidden;
     }
     .service-card.featured::after {
@@ -419,6 +411,8 @@
       background: var(--accent); color: #fff;
       font-size: 0.72rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;
       padding: 4px 10px; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase;
+      opacity: 1 !important; z-index: 2;
+      background-image: none; pointer-events: none;
     }
     .service-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
     .service-card h3 { font-size: 1rem; margin-bottom: 10px; }
@@ -1006,13 +1000,13 @@
           <p>Я — Александр Михайлов, AI-специалист и vibecoder. Помогаю предпринимателям и командам запускать цифровые продукты — сайты, приложения и ИИ-агентов, — которые реально работают на бизнес.</p>
         </div>
         <div class="about-block reveal reveal-delay-2">
-          <p>Я не просто разработчик — я <strong style="color:var(--text)">эксперт по применению нейросетей в бизнесе</strong>. Это означает: строю с AI, а не вокруг него. Продукты создаются быстрее и обходятся дешевле классической разработки.</p>
+          <p>Я не просто разработчик — я <strong style="color:var(--text)">эксперт по применению нейросетей в бизнесе</strong>. Это означает, что я знаю, как подобрать именно те вайбкодинг-решения, которые дадут максимальный эффект здесь и сейчас.</p>
         </div>
         <div class="about-block reveal reveal-delay-3">
           <p>Выпускник <strong style="color:var(--text)">Школы AI-Эксперт Дмитрия Ледовских</strong> — самой практической программы по нейросетям в русскоязычном пространстве. Меня интересует только то, что даёт измеримый результат.</p>
         </div>
         <div class="about-block reveal">
-          <p>Работаю с ограниченным числом клиентов — не более трёх проектов одновременно. Каждый проект получает полное внимание. <strong style="color:var(--text)">Один контакт. Полная ответственность.</strong></p>
+          <p>Работаю с ограниченным числом клиентов — для получения максимально качественного результата. Каждый проект получает максимум внимания и обратной связи. При необходимости — регулярную поддержку.</p>
         </div>
 
         <div class="stack-wrap reveal">
@@ -1079,7 +1073,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">Как долго делается?</button>
-        <div class="faq-a">Сроки зависят от объёма и сложности задачи — обсуждаются и согласовываются индивидуально на первом созвоне. Все договорённости фиксируются письменно до старта работ.</div>
+        <div class="faq-a">Сроки зависят от объёма и сложности задачи — обсуждаются и согласовываются индивидуально на первом созвоне.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Какие гарантии результата?</button>
