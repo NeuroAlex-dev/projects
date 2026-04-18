@@ -14,16 +14,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0b0b12;
-      --bg-2:      #13131e;
-      --bg-3:      #1a1a2a;
-      --accent:    #6366f1;
-      --accent-2:  #06b6d4;
-      --accent-3:  #8b5cf6;
-      --text:      #f0f0f8;
-      --muted:     #8888aa;
-      --border:    rgba(255,255,255,0.08);
-      --glow:      rgba(99,102,241,0.35);
+      --bg:        #f5f5fc;
+      --bg-2:      #ebebf8;
+      --bg-3:      #dfdff2;
+      --accent:    #5254d8;
+      --accent-2:  #0891b2;
+      --accent-3:  #7c3aed;
+      --text:      #0f0f1e;
+      --muted:     #5a5a7a;
+      --border:    rgba(82,84,216,0.12);
+      --glow:      rgba(82,84,216,0.22);
       --radius:    20px;
       --radius-sm: 10px;
     }
@@ -63,16 +63,17 @@
 
     /* glass card */
     .glass {
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(16px) saturate(150%);
       border: 1px solid var(--border);
       border-radius: var(--radius);
+      box-shadow: 0 2px 16px rgba(82,84,216,0.07);
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
     .glass:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 60px rgba(99,102,241,0.18);
-      border-color: rgba(99,102,241,0.3);
+      box-shadow: 0 16px 48px rgba(82,84,216,0.14);
+      border-color: rgba(82,84,216,0.28);
     }
 
     /* buttons */
@@ -136,7 +137,7 @@
     .glass::after {
       content: '';
       position: absolute; inset: 0; border-radius: inherit;
-      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.08) 0%, transparent 55%);
+      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(82,84,216,0.06) 0%, transparent 55%);
       pointer-events: none; opacity: 0; transition: opacity 0.35s; z-index: 1;
     }
     .glass:hover::after { opacity: 1; }
@@ -144,8 +145,8 @@
 
     /* Featured card animated glow pulse */
     @keyframes featuredGlow {
-      0% { box-shadow: 0 0 20px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.12); }
-      100% { box-shadow: 0 0 48px rgba(6,182,212,0.28), 0 8px 40px rgba(6,182,212,0.14); }
+      0% { box-shadow: 0 0 20px rgba(82,84,216,0.15), 0 8px 32px rgba(82,84,216,0.08); }
+      100% { box-shadow: 0 0 40px rgba(8,145,178,0.18), 0 8px 36px rgba(8,145,178,0.1); }
     }
     .service-card.featured { animation: featuredGlow 3s ease-in-out infinite alternate; }
 
@@ -160,9 +161,9 @@
     /* Aurora enhanced */
     .hero-bg {
       background:
-        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(99,102,241,0.32) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(6,182,212,0.22) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 40% at 50% 90%, rgba(139,92,246,0.18) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(82,84,216,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(8,145,178,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 50% 90%, rgba(124,58,237,0.08) 0%, transparent 60%);
       animation: aurora 12s ease-in-out infinite alternate;
       will-change: transform;
     }
@@ -240,19 +241,6 @@
       opacity: 0.85;
     }
 
-    /* ===== CUSTOM CURSOR ===== */
-    .cursor-dot, .cursor-ring {
-      position: fixed; pointer-events: none; z-index: 10000;
-      transform: translate(-50%, -50%); border-radius: 50%;
-    }
-    .cursor-dot  { width: 6px; height: 6px; background: var(--accent); top: 0; left: 0; }
-    .cursor-ring {
-      width: 36px; height: 36px; top: 0; left: 0;
-      border: 1px solid rgba(99,102,241,0.5);
-      transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
-    }
-    .cursor-ring.hovering { width: 56px; height: 56px; background: rgba(99,102,241,0.08); border-color: rgba(99,102,241,0.7); }
-    @media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
 
     /* ===== HEADER ===== */
     #header {
@@ -263,7 +251,7 @@
     }
     #header.visible {
       transform: translateY(0);
-      background: rgba(11,11,18,0.85);
+      background: rgba(245,245,252,0.92);
       backdrop-filter: blur(20px);
       box-shadow: 0 1px 0 var(--border);
     }
@@ -287,7 +275,7 @@
 
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 999;
-      background: rgba(11,11,18,0.97); backdrop-filter: blur(20px);
+      background: rgba(245,245,252,0.98); backdrop-filter: blur(20px);
       flex-direction: column; align-items: center; justify-content: center; gap: 32px;
     }
     .mobile-menu.open { display: flex; }
@@ -362,12 +350,13 @@
     .avatar-placeholder p { font-size: 0.85rem; }
 
     .floating-card {
-      position: absolute; bottom: -16px; left: -20px;
-      background: rgba(19,19,30,0.92); backdrop-filter: blur(16px);
+      position: absolute; top: -18px; right: -20px;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
       border: 1px solid var(--border); border-radius: 14px;
-      padding: 12px 18px; font-size: 0.85rem;
+      padding: 10px 16px; font-size: 0.82rem;
+      box-shadow: 0 4px 24px rgba(82,84,216,0.12);
       animation: float 4s ease-in-out infinite;
-      white-space: nowrap;
+      white-space: nowrap; color: var(--text);
     }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     .floating-card strong { color: var(--accent-2); }
@@ -381,7 +370,7 @@
     /* ===== TRUST BAR ===== */
     #trust {
       padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.015);
+      background: rgba(82,84,216,0.03);
     }
     .trust-grid {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 40px;
@@ -415,15 +404,13 @@
     #services { padding: 60px 0; }
     .services-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px; margin-top: 28px;
     }
     .service-card { padding: 24px; }
     .service-card.featured {
-      grid-row: span 2;
-      background: linear-gradient(160deg, rgba(99,102,241,0.1) 0%, rgba(6,182,212,0.05) 100%);
-      border-color: rgba(99,102,241,0.25);
+      background: linear-gradient(160deg, rgba(82,84,216,0.07) 0%, rgba(8,145,178,0.04) 100%);
+      border-color: rgba(82,84,216,0.2);
       position: relative; overflow: hidden;
     }
     .service-card.featured::after {
@@ -448,10 +435,7 @@
     .services-cta a { color: var(--accent); font-weight: 500; border-bottom: 1px dashed rgba(99,102,241,0.4); padding-bottom: 2px; transition: border-color 0.2s; }
     .services-cta a:hover { border-color: var(--accent); }
 
-    @media (max-width: 768px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card.featured { grid-row: span 1; }
-    }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
 
     /* ===== PORTFOLIO ===== */
     #portfolio { padding: 60px 0; }
@@ -597,7 +581,7 @@
     .direct-link {
       display: flex; align-items: center; gap: 14px;
       padding: 16px 20px; border-radius: 12px;
-      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      background: rgba(255,255,255,0.75); border: 1px solid var(--border);
       color: var(--muted); font-size: 0.92rem; transition: all 0.25s;
     }
     .direct-link:hover { color: var(--text); border-color: rgba(99,102,241,0.3); background: rgba(99,102,241,0.06); }
@@ -613,7 +597,7 @@
     .form-group label { font-size: 0.85rem; font-weight: 500; color: var(--muted); }
     .form-group input, .form-group textarea {
       padding: 14px 16px; border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      background: rgba(255,255,255,0.85); border: 1px solid var(--border);
       color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.95rem;
       transition: border-color 0.2s, box-shadow 0.2s; outline: none; resize: vertical;
     }
@@ -635,7 +619,7 @@
     /* ===== FOOTER ===== */
     footer {
       border-top: 1px solid var(--border); padding: 40px 0;
-      background: rgba(255,255,255,0.01);
+      background: rgba(82,84,216,0.03);
     }
     .footer-inner {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;
@@ -656,7 +640,7 @@
     #mobile-bar {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
       padding: 12px 16px; gap: 10px;
-      background: rgba(11,11,18,0.95); backdrop-filter: blur(16px);
+      background: rgba(245,245,252,0.97); backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
       transform: translateY(100%); transition: transform 0.4s ease;
     }
@@ -667,10 +651,6 @@
 </head>
 
 <body>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
@@ -754,19 +734,19 @@
     <div class="trust-grid">
       <div class="trust-item reveal">
         <span class="trust-icon">⚡</span>
-        <div>Запуск MVP за <strong>2–4 недели</strong></div>
+        <div>Ускорение рабочих процессов <strong>минимум в 10 раз</strong></div>
       </div>
       <div class="trust-item reveal reveal-delay-1">
         <span class="trust-icon">⭐</span>
         <div>Выпускник <strong>Школы AI-Эксперт</strong> Дмитрия Ледовских</div>
       </div>
       <div class="trust-item reveal reveal-delay-2">
-        <span class="trust-icon">🤝</span>
-        <div>Один специалист — <strong>полная ответственность</strong></div>
+        <span class="trust-icon">🎯</span>
+        <div>Полное <strong>погружение в ваш проект</strong></div>
       </div>
       <div class="trust-item reveal reveal-delay-3">
-        <span class="trust-icon">🔒</span>
-        <div><strong>Код</strong> остаётся у вас</div>
+        <span class="trust-icon">🔑</span>
+        <div>Подбор персональных <strong>решений под ключ</strong></div>
       </div>
     </div>
   </div>
@@ -1038,15 +1018,10 @@
         <div class="stack-wrap reveal">
           <div class="stack-label">Инструменты</div>
           <div class="stack-items">
-            <span class="stack-item">Claude</span>
+            <span class="stack-item">Claude Code</span>
             <span class="stack-item">ChatGPT</span>
-            <span class="stack-item">Cursor</span>
-            <span class="stack-item">n8n</span>
-            <span class="stack-item">Make</span>
+            <span class="stack-item">Google AI Studio</span>
             <span class="stack-item">Telegram API</span>
-            <span class="stack-item">Webflow</span>
-            <span class="stack-item">React</span>
-            <span class="stack-item">Python</span>
           </div>
         </div>
       </div>
@@ -1215,25 +1190,6 @@
 </div>
 
 <script>
-  // ===== CURSOR =====
-  const dot  = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  if (window.matchMedia('(hover: hover)').matches) {
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    (function animCursor() {
-      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-      dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(animCursor);
-    })();
-    document.querySelectorAll('a,button,.glass').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
-    });
-  }
-
   // ===== HEADER =====
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
